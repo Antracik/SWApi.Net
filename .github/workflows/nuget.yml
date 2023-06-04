@@ -1,6 +1,6 @@
 name: Deploy Nuget
 
-on: [push]
+on: push
 
 env:
     PROJECT_PATH: SWApi.Net/SWApi.Net.csproj
@@ -10,10 +10,7 @@ env:
 jobs:
   deploy:
     name: Deploy
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
