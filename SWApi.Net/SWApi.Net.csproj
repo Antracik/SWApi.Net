@@ -11,7 +11,7 @@
 		<RepositoryUrl>https://github.com/Antracik/SWApi.Net</RepositoryUrl>
 		<Title>SWApi.Net</Title>
 		<Description>A simple wrapper for the https://swapi.dev/ api</Description>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<PackageIcon>Holocron.png</PackageIcon>
 		<PackageProjectUrl>https://github.com/Antracik/SWApi.Net</PackageProjectUrl>
 	</PropertyGroup>
