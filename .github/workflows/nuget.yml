@@ -1,0 +1,32 @@
+name: Deploy Nuget
+
+on: [push]
+
+env:
+    PROJECT_PATH: SWApi.Net/SWApi.Net.csproj
+    PACKAGE_OUTPUT_DIRECTORY: ${{github.workspace}}\output
+    NUGET_SOURCE_RUL: 'https://api.nuget.org/v3/index.json'
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    - name: Restore dependencies
+      run: dotnet restore ${{env.PROJECT_PATH}}
+    - name: Build
+      run: dotnet build ${{env.PROJECT_PATH}} --no-restore --configuration Release
+    - name: Pack
+      run: dotnet pack ${{env.PROJECT_PATH}} --no-build --no-restore --configuration Release --include-symbols --output ${{env.PACKAGE_OUTPUT_DIRECTORY}}
+    - name: Push
+      run: dotnet nuget push ${{env.PACKAGE_OUTPUT_DIRECTORY}}\*.nupkg -k ${{secrets.SWAPI_NET_NUGET_AUTH_TOKEN}} -s ${{env.NUGET_SOURCE_RUL}}
+
+
