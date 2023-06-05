@@ -7,7 +7,7 @@ public sealed class Film : IBaseEntity
 {
     [JsonConstructor]
     public Film(
-        List<string> characters,
+        IEnumerable<string> characters,
         DateTime created,
         string director,
         DateTime edited,
@@ -40,7 +40,7 @@ public sealed class Film : IBaseEntity
     }
 
     [JsonPropertyName("characters")]
-    public IReadOnlyList<string> Characters { get; }
+    public IEnumerable<string> Characters { get; }
 
     [JsonPropertyName("created")]
     public DateTime Created { get; }

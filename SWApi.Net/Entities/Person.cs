@@ -7,23 +7,23 @@ public sealed class Person : IBaseEntity
 {
     [JsonConstructor]
     public Person(
-        string name,
-        string height,
-        string mass,
-        string hairColor,
-        string skinColor,
-        string eyeColor,
-        string birthYear,
-        string gender,
-        string homeworld,
-        IEnumerable<string> films,
-        IEnumerable<string> species,
-        IEnumerable<string> vehicles,
-        IEnumerable<string> starships,
-        DateTime created,
-        DateTime edited,
-        string url
-    )
+           string name,
+           string height,
+           string mass,
+           string hairColor,
+           string skinColor,
+           string eyeColor,
+           string birthYear,
+           string gender,
+           string homeworld,
+           IEnumerable<string> films,
+           IEnumerable<string> species,
+           IEnumerable<string> vehicles,
+           IEnumerable<string> starships,
+           DateTime created,
+           DateTime edited,
+           string url
+       )
     {
         Name = name;
         Height = height;
@@ -74,7 +74,7 @@ public sealed class Person : IBaseEntity
     public IEnumerable<string> Films { get; }
 
     [JsonPropertyName("species")]
-    public IEnumerable<object> Species { get; }
+    public IEnumerable<string> Species { get; }
 
     [JsonPropertyName("vehicles")]
     public IEnumerable<string> Vehicles { get; }
